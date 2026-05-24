@@ -1,0 +1,1018 @@
+/* ============================================
+   Maiguerrart Nails — Complete Stylesheet v2
+   Stronger watermark | Services+Booking merged
+   Real-time time blocking | Reminder system
+   ============================================ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: #2C1A1D;
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+/* ── STRONGER WATERMARK BACKGROUND ── */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://hgomngtjbiopxvcttprn.supabase.co/storage/v1/object/public/nail-designs/sydney-opera-house-watercolour-art.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.35;
+    /* Lower opacity for elegant watercolor look */
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Alternative watermark images (uncomment to try):
+   - Nail art close-up: https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=1920&q=80
+   - Pink aesthetic: https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1920&q=80
+   - Nail polish: https://images.unsplash.com/photo-1604654894610-df63bc5362a9?w=1920&q=80
+*/
+
+/* ── HEADER ── */
+header {
+    background: transparent;
+    border-bottom: none;
+    padding: 0 2rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 600;
+    color: #7A2D42;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-shadow: 0 1px 4px rgba(255, 255, 255, 0.8);
+}
+
+nav {
+    display: flex;
+    gap: 8px;
+}
+
+.nav-btn {
+    padding: 8px 18px;
+    border: 2px solid rgba(212, 117, 138, 0.6);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.25);
+    color: #9B4D60;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+.nav-btn:hover {
+    background: rgba(253, 232, 238, 0.6);
+    border-color: #D4758A;
+}
+
+.nav-btn-primary {
+    background: rgba(212, 117, 138, 0.85);
+    color: white;
+    border-color: rgba(212, 117, 138, 0.6);
+    animation: subtlePulse 2s infinite;
+    text-shadow: none;
+}
+
+@keyframes subtlePulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(212, 117, 138, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 0 6px rgba(212, 117, 138, 0);
+    }
+}
+
+.nav-btn-primary:hover {
+    background: rgba(155, 77, 96, 0.9);
+    border-color: #9B4D60;
+    animation: none;
+}
+
+/* ── PAGES ── */
+.page {
+    display: none;
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+}
+
+.page.active {
+    display: block;
+}
+
+/* hidden class - only hides when NOT active */
+.page.hidden {
+    display: none !important;
+}
+
+/* ── HERO ── */
+.hero {
+    padding: 2rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 32px;
+    color: #1A1A1A;
+    margin-bottom: 6px;
+    text-shadow: 0 1px 8px rgba(255, 255, 255, 0.95);
+}
+
+.hero p {
+    color: #1A1A1A;
+    font-size: 16px;
+    text-shadow: 0 1px 6px rgba(255, 255, 255, 0.95);
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.artist-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #D4758A;
+    flex-shrink: 0;
+    box-shadow: 0 4px 20px rgba(212, 117, 138, 0.3);
+}
+
+.hero-flags {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.hero-name {
+    font-size: 16px;
+    color: #D4758A;
+    font-weight: 600;
+    margin-bottom: 8px !important;
+}
+
+.hero-cta {
+    background: linear-gradient(135deg, #D4758A, #9B4D60);
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(212, 117, 138, 0.4);
+}
+
+.hero-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 117, 138, 0.5);
+}
+
+/* ── CAROUSEL ── */
+.carousel-section {
+    padding: 2rem 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.carousel-title {
+    font-size: 26px;
+    color: #9B4D60;
+    text-align: center;
+    margin-bottom: 4px;
+    text-shadow: 0 1px 8px rgba(255, 255, 255, 0.95);
+}
+
+.carousel-sub {
+    font-size: 14px;
+    color: #7A5C62;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.carousel-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.carousel-window {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-item {
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.carousel-item .instagram-media {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    min-width: auto !important;
+}
+
+.carousel-btn {
+    background: #D4758A;
+    color: white;
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    font-size: 28px;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 12px rgba(212, 117, 138, 0.4);
+    transition: all 0.2s;
+}
+
+.carousel-btn:hover {
+    background: #9B4D60;
+    transform: scale(1.05);
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(212, 117, 138, 0.3);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.dot:hover {
+    background: rgba(212, 117, 138, 0.5);
+}
+
+.dot.active {
+    background: #D4758A;
+    transform: scale(1.2);
+}
+
+.carousel-counter-wrap {
+    text-align: center;
+    font-size: 13px;
+    color: #7A5C62;
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+.insta-cta-wrap {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.insta-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: white;
+    padding: 14px 32px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3);
+}
+
+.insta-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 39, 67, 0.4);
+}
+
+/* ── SERVICES + BOOKING COMBINED SECTION ── */
+.booking-section {
+    padding: 2rem 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.section-title {
+    font-size: 26px;
+    color: #9B4D60;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 1px 8px rgba(255, 255, 255, 0.95);
+}
+
+.services-booking-wrapper {
+    background: rgba(255, 255, 255, 0.55);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(245, 198, 198, 0.5);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(8px);
+}
+
+
+/* ── FORM INPUTS ── */
+.field-input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid #F5C6C6;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: inherit;
+    background: white;
+    color: #2C1A1D;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.field-input:focus {
+    border-color: #D4758A;
+    box-shadow: 0 0 0 3px rgba(212, 117, 138, 0.1);
+}
+
+.field-input:disabled {
+    background: #f5f5f5;
+    color: #999;
+    cursor: not-allowed;
+}
+
+textarea.field-input {
+    resize: vertical;
+    min-height: 90px;
+}
+
+/* ── FLIP CARDS ── */
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 2rem;
+}
+
+.flip-card {
+    background: transparent;
+    height: 170px;
+    cursor: pointer;
+    perspective: 1000px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #F5C6C6;
+    overflow: hidden;
+}
+
+.flip-card-front {
+    background: rgba(255, 255, 255, 0.92);
+    text-align: center;
+    padding: 16px 12px;
+}
+
+.flip-card:hover .flip-card-front {
+    border-color: #D4758A;
+}
+
+.flip-card-front span {
+    font-size: 32px;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.flip-card-front strong {
+    font-size: 14px;
+    display: block;
+    color: #2C1A1D;
+    margin-bottom: 3px;
+    font-weight: 600;
+}
+
+.flip-card-front small {
+    font-size: 13px;
+    color: #D4758A;
+    font-weight: 600;
+}
+
+/* Back side */
+.flip-card-back {
+    background: linear-gradient(135deg, #9B4D60 0%, #D4758A 100%);
+    color: white;
+    transform: rotateY(180deg);
+    border-color: #9B4D60;
+    padding: 14px 12px;
+    text-align: center;
+}
+
+.flip-card-back h4 {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    color: white;
+}
+
+.flip-card-back p {
+    font-size: 11px;
+    line-height: 1.4;
+    margin: 0 0 8px 0;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.flip-meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+    font-size: 12px;
+}
+
+.flip-meta span:first-child {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.flip-price {
+    font-weight: 700;
+    font-size: 14px;
+    color: white;
+}
+
+.flip-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    justify-content: center;
+}
+
+.flip-tags span {
+    font-size: 9px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2px 6px;
+    border-radius: 10px;
+    color: rgba(255, 255, 255, 0.95);
+    white-space: nowrap;
+}
+
+/* Selected state */
+.flip-card.selected .flip-card-inner {
+    box-shadow: 0 0 0 3px rgba(212, 117, 138, 0.4), 0 6px 20px rgba(212, 117, 138, 0.25);
+}
+
+.flip-card.selected .flip-card-front,
+.flip-card.selected .flip-card-back {
+    border-color: #D4758A;
+}
+
+.flip-card.selected .flip-card-front::after {
+    content: '✓';
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #D4758A;
+    color: white;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    z-index: 2;
+}
+
+/* ── BOOKING PAGE (Separate) ── */
+.booking-page-wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem 1rem 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.booking-header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #F5C6C6;
+}
+
+.booking-header-bar h2 {
+    color: #9B4D60;
+    font-size: 24px;
+    margin: 0;
+}
+
+.booking-content {
+    background: rgba(255, 255, 255, 0.55);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(245, 198, 198, 0.5);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+    margin-bottom: 2rem;
+    backdrop-filter: blur(8px);
+}
+
+.manage-section {
+    background: rgba(255, 255, 255, 0.55);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(245, 198, 198, 0.5);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(8px);
+}
+
+
+
+/* ── UPLOAD AREA ── */
+.upload-area {
+    border: 2px dashed #F5C6C6;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.2s;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.upload-area:hover {
+    border-color: #D4758A;
+    background: rgba(253, 232, 238, 0.3);
+}
+
+.upload-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.upload-icon {
+    font-size: 32px;
+}
+
+.upload-text {
+    font-size: 14px;
+    color: #9B4D60;
+    font-weight: 500;
+}
+
+.upload-hint {
+    font-size: 12px;
+    color: #7A5C62;
+}
+
+.design-preview {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.upload-status {
+    margin-top: 8px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* ── BOND NOTICE ── */
+.bond-notice {
+    background: #FFF3CD;
+    border: 1px solid #FFEAA7;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 1.2rem 0;
+}
+
+.bond-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #856404;
+    margin-bottom: 8px;
+}
+
+.bond-text {
+    font-size: 13px;
+    color: #856404;
+    line-height: 1.6;
+}
+
+.bond-free {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #856404;
+    font-weight: 500;
+}
+
+/* ── CONFIRMATION ── */
+.confirmation {
+    text-align: center;
+    padding: 2rem;
+    background: #D4EDDA;
+    border-radius: 12px;
+    margin-top: 1rem;
+    border: 1px solid #C3E6CB;
+    animation: fadeIn 0.5s ease;
+}
+
+.confirmation.hidden {
+    display: none;
+}
+
+.confirmation span {
+    font-size: 48px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.confirmation h3 {
+    font-size: 22px;
+    color: #155724;
+    margin-bottom: 8px;
+}
+
+.confirmation p {
+    color: #155724;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.confirmation-hint {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #155724;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── MOBILE RESPONSIVE ── */
+@media (max-width: 768px) {
+    header {
+        padding: 0 1rem;
+        height: 56px;
+    }
+
+    .flip-card {
+        height: 150px;
+    }
+
+    .flip-card-front span {
+        font-size: 28px;
+    }
+
+    .flip-card-back h4 {
+        font-size: 13px;
+    }
+
+    .flip-card-back p {
+        font-size: 10px;
+    }
+
+    .flip-meta {
+        font-size: 11px;
+        gap: 8px;
+    }
+
+    .flip-tags span {
+        font-size: 8px;
+        padding: 2px 5px;
+    }
+
+    .logo {
+        font-size: 15px;
+    }
+
+    .nav-btn {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    .hero {
+        padding: 1.5rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 24px;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .artist-photo {
+        width: 100px;
+        height: 100px;
+    }
+
+    .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .flip-card {
+        height: 150px;
+    }
+
+    .flip-card-front span {
+        font-size: 28px;
+    }
+
+    .flip-card-back h4 {
+        font-size: 13px;
+    }
+
+    .flip-desc {
+        font-size: 10px;
+        margin-bottom: 6px;
+    }
+
+    .flip-meta {
+        margin-bottom: 6px;
+    }
+
+    .flip-duration,
+    .flip-price {
+        font-size: 11px;
+    }
+
+    .flip-includes span {
+        font-size: 8px;
+        padding: 2px 5px;
+    }
+
+    .field-row {
+        grid-template-columns: 1fr;
+    }
+
+    .carousel-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 22px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .services-booking-wrapper,
+    .manage-wrapper {
+        padding: 1.2rem;
+    }
+
+    .reminder-options {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .booking-header-bar {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .booking-header-bar h2 {
+        font-size: 20px;
+    }
+
+    .booking-content,
+    .manage-section {
+        padding: 1.2rem;
+    }
+
+    .admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .flip-card {
+        height: 140px;
+    }
+
+    .flip-card {
+        height: 140px;
+    }
+
+    .hero-cta {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+
+    .insta-cta {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+
+    .section-title {
+        font-size: 22px;
+    }
+}
+/* ============================================
+   CONSISTENT BUTTON STYLES
+   ============================================ */
+
+/* Base button style - applies to ALL buttons */
+button,
+.back-btn,
+.search-btn,
+.admin-btn,
+.admin-btn-export,
+.submit-btn {
+    padding: 12px 24px;
+    border: 2px solid #D4758A;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #D4758A, #9B4D60);
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(212, 117, 138, 0.3);
+    font-family: inherit;
+    text-shadow: none;
+}
+
+/* Hover effect */
+button:hover,
+.back-btn:hover,
+.search-btn:hover,
+.admin-btn:hover,
+.admin-btn-export:hover,
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 117, 138, 0.4);
+    background: linear-gradient(135deg, #9B4D60, #D4758A);
+}
+
+/* Active/click effect */
+button:active,
+.back-btn:active,
+.search-btn:active,
+.admin-btn:active,
+.admin-btn-export:active,
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* Special: Secondary/outline buttons (like Back to Home) */
+.back-btn {
+    background: white;
+    color: #D4758A;
+    border: 2px solid #D4758A;
+}
+
+.back-btn:hover {
+    background: #FDE8EE;
+    color: #9B4D60;
+}
+
+/* Special: Admin export button */
+.admin-btn-export {
+    background: linear-gradient(135deg, #4CAF50, #2E7D32);
+    border-color: #4CAF50;
+}
+
+.admin-btn-export:hover {
+    background: linear-gradient(135deg, #2E7D32, #4CAF50);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.3);
+}
+
+/* Disabled state */
+button:disabled,
+.submit-btn:disabled {
+    background: #ccc;
+    border-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Make sure nav buttons keep their style */
+.nav-btn {
+    padding: 8px 18px;
+    border: 2px solid rgba(212, 117, 138, 0.6);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.25);
+    color: #9B4D60;
+    font-size: 14px;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+.nav-btn:hover {
+    background: rgba(253, 232, 238, 0.6);
+    border-color: #D4758A;
+}
+
+.nav-btn-primary {
+    background: rgba(212, 117, 138, 0.85);
+    color: white;
+    border-color: rgba(212, 117, 138, 0.6);
+    animation: subtlePulse 2s infinite;
+    text-shadow: none;
+}
+
+.nav-btn-primary:hover {
+    background: rgba(155, 77, 96, 0.9);
+    border-color: #9B4D60;
+    animation: none;
+}

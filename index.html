@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maiguerrart Nails | Karen Perez — Sydney Nail Artist</title>
+    <meta name="description"
+        content="Professional nail art services in Sydney by Karen Perez. Gel manicure, acrylic, dip powder, nail art, builder gel, pedicure. Book online with $20 bond.">
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script async src="//www.instagram.com/embed.js"></script>
+    <base target="_blank">
+    <base target="_blank">
+</head>
+
+<body>
+
+    <!-- ==================== HEADER ==================== -->
+    <header>
+        <div class="logo">
+            💅 Maiguerrart Nails
+            <img src="https://flagcdn.com/w20/co.png" alt="Colombia"
+                style="width:18px;vertical-align:middle;margin-left:6px">
+            <img src="https://flagcdn.com/w20/au.png" alt="Australia"
+                style="width:18px;vertical-align:middle;margin-left:2px">
+        </div>
+        <nav>
+            <button onclick="showPage('home')" class="nav-btn">Home</button>
+            <button onclick="showPage('booking')" class="nav-btn nav-btn-primary">Book Now</button>
+            <button onclick="showPage('admin')" class="nav-btn">Admin</button>
+        </nav>
+    </header>
+
+    <!-- ==================== HOME PAGE ==================== -->
+    <div id="page-home" class="page active">
+
+        <!-- HERO -->
+        <div class="hero">
+            <div class="hero-content">
+                <img src="https://i.ibb.co/pj1Pv5Z3/karen-jpg.jpg" alt="Karen Perez — Nail Artist" class="artist-photo">
+                <div class="hero-text">
+                    <div class="hero-flags">
+                        <img src="https://flagcdn.com/w40/co.png" alt="Colombia"
+                            style="width:28px;border-radius:3px;margin-right:6px">
+                        <img src="https://flagcdn.com/w40/au.png" alt="Australia" style="width:28px;border-radius:3px">
+                    </div>
+                    <h1>Maiguerrart Nails</h1>
+                    <p class="hero-name">by Karen Perez</p>
+                    <p>Colombian nail artist based in Sydney. More than a designer — I create art on your nails. ✨</p>
+                    <div style="margin-top:12px">
+                        <button onclick="showPage('booking')" class="hero-cta">Book Your Appointment</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instagram Carousel -->
+        <div class="carousel-section">
+            <h2 class="carousel-title">✨ Mai's Work</h2>
+            <p class="carousel-sub">Swipe through to see the magic</p>
+            <div class="carousel-wrapper">
+                <button class="carousel-btn" onclick="moveCarousel(-1)" aria-label="Previous">‹</button>
+                <div class="carousel-window">
+                    <div class="carousel-track" id="carousel-track">
+                        <div class="carousel-item">
+                            <blockquote class="instagram-media"
+                                data-instgrm-permalink="https://www.instagram.com/p/DUW0iJUE0qX/"
+                                data-instgrm-version="14"></blockquote>
+                        </div>
+                        <div class="carousel-item">
+                            <blockquote class="instagram-media"
+                                data-instgrm-permalink="https://www.instagram.com/p/DYCidE9vwU7/"
+                                data-instgrm-version="14"></blockquote>
+                        </div>
+                        <div class="carousel-item">
+                            <blockquote class="instagram-media"
+                                data-instgrm-permalink="https://www.instagram.com/p/C48ETzYLhOa/"
+                                data-instgrm-version="14"></blockquote>
+                        </div>
+                        <div class="carousel-item">
+                            <blockquote class="instagram-media"
+                                data-instgrm-permalink="https://www.instagram.com/reel/DRtI1UFD0jA/"
+                                data-instgrm-version="14"></blockquote>
+                        </div>
+                        <div class="carousel-item">
+                            <blockquote class="instagram-media"
+                                data-instgrm-permalink="https://www.instagram.com/p/DMxWEcsTqjH/"
+                                data-instgrm-version="14"></blockquote>
+                        </div>
+                        <div class="carousel-item">
+                            <blockquote class="instagram-media"
+                                data-instgrm-permalink="https://www.instagram.com/p/DJG8yrdzQQv/"
+                                data-instgrm-version="14"></blockquote>
+                        </div>
+                        <div class="carousel-item">
+                            <blockquote class="instagram-media"
+                                data-instgrm-permalink="https://www.instagram.com/p/DI3AGB3T7Rl/"
+                                data-instgrm-version="14"></blockquote>
+                        </div>
+                        <div class="carousel-item">
+                            <blockquote class="instagram-media"
+                                data-instgrm-permalink="https://www.instagram.com/p/DEUEkI8TmD8/"
+                                data-instgrm-version="14"></blockquote>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn" onclick="moveCarousel(1)" aria-label="Next">›</button>
+            </div>
+            <div class="carousel-dots" id="carousel-dots"></div>
+            <div class="carousel-counter-wrap">
+                <span id="carousel-counter">1 / 8</span>
+            </div>
+            <div class="insta-cta-wrap">
+                <a href="https://www.instagram.com/maiguerrart" target="_blank" rel="noopener" class="insta-cta">
+                    📸 Follow @maiguerrart on Instagram
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== BOOKING PAGE (SEPARATE) ==================== -->
+    <div id="page-booking" class="page hidden">
+        <div class="booking-page-wrapper">
+            <div class="booking-header-bar">
+                <h2>💅 Book Your Appointment</h2>
+                <button onclick="showPage('home')" class="back-btn">← Back to Home</button>
+            </div>
+
+            <!-- Around line where booking content starts -->
+            <form class="booking-content" id="bookingForm">
+                </form>
+                
+                <!-- Services -->
+                <div class="field-group">
+                    <label>Choose your service *</label>
+                    <div class="service-grid">
+                        <div class="flip-card" data-service="Gel Manicure" data-price="65"
+                            onclick="selectService(this)">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <span>💅</span>
+                                    <strong>Gel Manicure</strong>
+                                    <small>from $65</small>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4>Gel Manicure</h4>
+                                    <p>Chip-free, glossy nails that last up to 3 weeks. No drying time.</p>
+                                    <div class="flip-meta">
+                                        <span>⏱ 45-60 min</span>
+                                        <span class="flip-price">$65</span>
+                                    </div>
+                                    <div class="flip-tags">
+                                        <span>Cuticle care</span>
+                                        <span>Gel colour</span>
+                                        <span>Top coat</span>
+                                        <span>Oil finish</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card" data-service="Acrylic Set" data-price="85" onclick="selectService(this)">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <span>✨</span>
+                                    <strong>Acrylic Set</strong>
+                                    <small>from $85</small>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4>Acrylic Set</h4>
+                                    <p>Sculptured nails with custom length and shape. Strong and bold.</p>
+                                    <div class="flip-meta">
+                                        <span>⏱ 75-90 min</span>
+                                        <span class="flip-price">$85</span>
+                                    </div>
+                                    <div class="flip-tags">
+                                        <span>Nail prep</span>
+                                        <span>Acrylic sculpt</span>
+                                        <span>Custom shape</span>
+                                        <span>Gloss finish</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card" data-service="Dip Powder" data-price="70" onclick="selectService(this)">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <span>🌸</span>
+                                    <strong>Dip Powder</strong>
+                                    <small>from $70</small>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4>Dip Powder</h4>
+                                    <p>Strong, lightweight nails with a natural feel. No UV lamp needed.</p>
+                                    <div class="flip-meta">
+                                        <span>⏱ 60-75 min</span>
+                                        <span class="flip-price">$70</span>
+                                    </div>
+                                    <div class="flip-tags">
+                                        <span>Nail prep</span>
+                                        <span>Dip layers</span>
+                                        <span>Shape & buff</span>
+                                        <span>Top seal</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card" data-service="Nail Art" data-price="90" onclick="selectService(this)">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <span>🎨</span>
+                                    <strong>Nail Art</strong>
+                                    <small>from $90</small>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4>Nail Art</h4>
+                                    <p>Hand-painted designs, crystals, chrome, and 3D details.</p>
+                                    <div class="flip-meta">
+                                        <span>⏱ 90-120 min</span>
+                                        <span class="flip-price">$90</span>
+                                    </div>
+                                    <div class="flip-tags">
+                                        <span>Consultation</span>
+                                        <span>Hand-painted</span>
+                                        <span>Embellishments</span>
+                                        <span>Protective seal</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card" data-service="Builder Gel" data-price="80" onclick="selectService(this)">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <span>🔮</span>
+                                    <strong>Builder Gel</strong>
+                                    <small>from $80</small>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4>Builder Gel</h4>
+                                    <p>Flexible overlay that strengthens natural nails and adds length.</p>
+                                    <div class="flip-meta">
+                                        <span>⏱ 60-75 min</span>
+                                        <span class="flip-price">$80</span>
+                                    </div>
+                                    <div class="flip-tags">
+                                        <span>Strengthening</span>
+                                        <span>Gel overlay</span>
+                                        <span>Shape & colour</span>
+                                        <span>Cuticle care</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card" data-service="Gel Pedicure" data-price="55"
+                            onclick="selectService(this)">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <span>🦶</span>
+                                    <strong>Gel Pedicure</strong>
+                                    <small>from $55</small>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4>Gel Pedicure</h4>
+                                    <p>Luxurious foot care with long-lasting gel polish.</p>
+                                    <div class="flip-meta">
+                                        <span>⏱ 60-75 min</span>
+                                        <span class="flip-price">$55</span>
+                                    </div>
+                                    <div class="flip-tags">
+                                        <span>Foot soak</span>
+                                        <span>Callus care</span>
+                                        <span>Gel polish</span>
+                                        <span>Massage</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- Date & Time -->
+                <div class="field-row">
+                    <div class="field-group">
+                        <label>Date *</label>
+                        <input type="date" id="f-date" class="field-input" onchange="loadAvailableTimes()" required>
+                        <small class="field-hint">Select a date to see available times</small>
+                    </div>
+                    <div class="field-group">
+                        <label>Time *</label>
+                        <select id="f-time" class="field-input" required disabled>
+                            <option value="">Select date first</option>
+                        </select>
+                        <small id="time-hint" class="field-hint" style="color:#D4758A;opacity:0">Times shown are
+                            available</small>
+                    </div>
+                </div>
+
+                <!-- Personal Info -->
+                <div class="field-row">
+                    <div class="field-group">
+                        <label>First Name *</label>
+                        <input type="text" id="f-first" class="field-input" placeholder="Sofia" required>
+                    </div>
+                    <div class="field-group">
+                        <label>Last Name *</label>
+                        <input type="text" id="f-last" class="field-input" placeholder="Martinez" required>
+                    </div>
+                </div>
+
+                <div class="field-row">
+                    <div class="field-group">
+                        <label>Email *</label>
+                        <input type="email" id="f-email" class="field-input" placeholder="sofia@email.com" required>
+                    </div>
+                    <div class="field-group">
+                        <label>Phone *</label>
+                        <input type="tel" id="f-phone" class="field-input" placeholder="0412 345 678" required>
+                    </div>
+                </div>
+
+                <!-- Reminder (SMS default) -->
+                <div class="field-group">
+                    <label>Reminder Preferences</label>
+                    <div class="reminder-options">
+                        <label class="reminder-check">
+                            <input type="checkbox" id="reminder-sms" checked>
+                            <span>📱 SMS reminder (24h before)</span>
+                        </label>
+                        <label class="reminder-check">
+                            <input type="checkbox" id="reminder-email">
+                            <span>📧 Email reminder (24h before)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Design Upload -->
+                <div class="field-group">
+                    <label>Nail Design Inspiration <span style="color:#7A5C62;font-weight:400">(Optional)</span></label>
+                    <div class="upload-area">
+                        <input type="file" id="f-design" accept="image/jpeg,image/png,image/webp"
+                            onchange="handleDesignUpload(event)" style="display:none">
+                        <label for="f-design" class="upload-label">
+                            <span class="upload-icon">📎</span>
+                            <span class="upload-text">Click to upload a design photo</span>
+                            <span class="upload-hint">JPG, PNG, WebP — Max 5MB</span>
+                        </label>
+                        <img id="design-preview" class="design-preview" style="display:none" alt="Design preview">
+                        <div id="upload-status" class="upload-status"></div>
+                    </div>
+                </div>
+
+                <!-- Notes -->
+                <div class="field-group">
+                    <label>Notes / Special Requests</label>
+                    <textarea id="f-notes" class="field-input"
+                        placeholder="Any allergies, preferred shapes, or design ideas..."></textarea>
+                </div>
+
+                <!-- Bond Notice -->
+                <div class="bond-notice">
+                    <div class="bond-title">⚠️ Booking Bond — $20 AUD</div>
+                    <div class="bond-text">
+                        To preserve the artist's time and your booking, please be aware that
+                        <strong>we won't process any refund for late cancellation or no shows.</strong>
+                        This $20 bond will be deducted from your final service price on the day.
+                    </div>
+                    <div class="bond-free">✓ Free cancellation if cancelled 48+ hours before your appointment</div>
+                </div>
+
+                <!-- Submit -->
+                <button class="submit-btn" onclick="submitBooking()">
+                    💳 Pay $20 Bond & Confirm Appointment
+                </button>
+
+                <!-- Success -->
+                <div id="confirmation" class="confirmation hidden">
+                    <span>🎉</span>
+                    <h3>You're booked!</h3>
+                    <p id="confirmation-details"></p>
+                    <p class="confirmation-hint">
+                        A confirmation text has been sent. You'll receive a reminder 24 hours before your appointment.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Manage Booking (on same booking page, below form) -->
+            <div class="manage-section">
+                <h3 style="color:#9B4D60;margin-bottom:6px;text-align:center">🔄 Manage Your Booking</h3>
+                <p style="font-size:14px;color:#7A5C62;margin-bottom:1rem;text-align:center">
+                    Enter your name, email or phone to find, reschedule or cancel.
+                </p>
+                <div class="field-group" style="max-width:500px;margin:0 auto 1rem">
+                    <input type="text" id="manage-search" class="field-input"
+                        placeholder="Your name, email or phone...">
+                </div>
+                <div style="text-align:center;margin-bottom:1rem">
+                    <button onclick="searchBooking()" class="search-btn">
+                        🔍 Find My Booking
+                    </button>
+                </div>
+                <div id="manage-results" style="max-width:600px;margin:0 auto"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== ADMIN PAGE ==================== -->
+    <div id="page-admin" class="page hidden">
+        <div style="padding:1rem">
+            <button onclick="showPage('home')" class="back-btn" style="margin-bottom:1rem">← Back to Home</button>
+        </div>
+        <div class="form-card" style="max-width:900px;margin:0 auto 2rem;padding:1.5rem">
+            <div class="admin-header">
+                <h2 class="admin-title">📋 Admin Dashboard</h2>
+                <div class="admin-actions">
+                    <button onclick="exportToExcel()" class="admin-btn admin-btn-export">📊 Export to Excel</button>
+                    <button onclick="loadAdminDashboard()" class="admin-btn">🔄 Refresh</button>
+                </div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card stat-total">
+                    <div class="stat-number" id="stat-total">-</div>
+                    <div class="stat-label">Total Bookings</div>
+                </div>
+                <div class="stat-card stat-confirmed">
+                    <div class="stat-number" id="stat-confirmed">-</div>
+                    <div class="stat-label">Confirmed</div>
+                </div>
+                <div class="stat-card stat-pending">
+                    <div class="stat-number" id="stat-pending">-</div>
+                    <div class="stat-label">Pending</div>
+                </div>
+            </div>
+            <div id="bookings-list">Loading...</div>
+        </div>
+    </div>
+
+    <script src="supabase.js"></script>
+    <script src="stripe.js"></script>
+    <script src="app.js"></script>
+
+</body>
+
+</html>
